@@ -4,7 +4,6 @@ import { TodoDataService } from '../../todo-data.service';
 import { Todo } from '../../todo';
 
 @Component({
-  providers: [TodoDataService],
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css']

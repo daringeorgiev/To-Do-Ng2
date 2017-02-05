@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { routedComponents } from './app.routes';
 import { TodoComponent } from './todos/todo/todo.component';
 import { TodoListComponent } from './todos/todo-list/todo-list.component';
+import { TodoDataService } from './todo-data.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { TodoListComponent } from './todos/todo-list/todo-list.component';
     HttpModule,
     routedComponents
   ],
-  providers: [],
+  providers: [TodoDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
