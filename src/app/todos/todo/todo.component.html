@@ -1,8 +1,34 @@
-<p>
-  Todo# {{todo.id}}
-</p>
-<p>
-  title {{todo.title}}
-</p>
+<div class="row">
+  <div class="class=col-lg-6 col-lg-offset-2 col-md-8 col-md-offset-1">
+    <form>
+      <legend>Todo</legend>
 
+      <div class="form-group">
+        <label for="todoTitle">Title</label>
+        <input type="text" class="form-control" id="todoTitle" placeholder="Title" value="{{todo.title}}">
+      </div>
 
+      <div class="form-group">
+        <label for="todoText">Text</label>
+        <textarea class="form-control" id="todoText" placeholder="Title" value="{{todo.text}}"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="todoComplete">Complete</label>
+        <div class="radio-inline">
+          <label><input type="radio" name="todoComplete">Yes</label>
+        </div>
+        <div class="radio-inline">
+          <label><input type="radio" name="todoComplete">No</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-lg-4 col-lg-offset-4">
+          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="reset" class="btn btn-default">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
