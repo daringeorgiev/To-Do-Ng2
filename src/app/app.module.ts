@@ -9,13 +9,17 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { routedComponents } from './app.routes';
+import { TodoComponent } from './todos/todo/todo.component';
+import { TodoListComponent } from './todos/todo-list/todo-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    TodoComponent,
+    TodoListComponent
   ],
   imports: [
     BrowserModule,
