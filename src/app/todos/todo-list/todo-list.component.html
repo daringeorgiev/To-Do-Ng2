@@ -1,21 +1,31 @@
-<div class="jumbotron">
-  <div class="header">
-    <h1>Todos</h1>
-    <input class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
-    <button (click)="addTodo()">Add</button>
-  </div>
-  <section class="main" *ngIf="todos.length > 0">
-    <ul class="list-group">
-      <li *ngFor="let todo of todos" [class.completed]="todo.complete" class="list-group-item">
-        <div class="view">
-          <input class="toggle" type="checkbox" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
-          <a [routerLink]="['/todos', todo.id]"><label>{{todo.title}}</label></a>
-          <button class="destroy" (click)="removeTodo(todo)"></button>
-        </div>
-      </li>
-    </ul>
-  </section>
-  <div class="footer" *ngIf="todos.length > 0">
-    <span class="todo-count"><strong>{{todos.length}}</strong> {{todos.length == 1 ? 'item' : 'items'}} left</span>
+<div class="row">
+  <div class="class=col-lg-6 col-lg-offset-2 col-md-8 col-md-offset-1">
+    <div>
+      <div class="page-header">
+        <h1>Todos</h1>
+      </div>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" (click)="addTodo()">Add</button>
+        </span>
+      </div>
+    </div>
+    <div class="row todo-list" *ngIf="todos.length > 0">
+      <div class="class=col-lg-6 col-lg-offset-2 col-md-8 col-md-offset-1">
+        <ul class="list-group">
+          <li *ngFor="let todo of todos" class="list-group-item">
+            <div class="view">
+              <input class="toggle" type="checkbox" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
+              <a [routerLink]="['/todos', todo.id]" [class.completed]="todo.complete">{{todo.title}}</a>
+              <span class="remove-todo-icon glyphicon glyphicon-remove" (click)="removeTodo(todo)" aria-hidden="true"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="todos.length > 0">
+      <span class="todo-count"><strong>{{todos.length}}</strong> {{todos.length == 1 ? 'item' : 'items'}} left</span>
+    </div>
   </div>
 </div>
