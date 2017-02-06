@@ -13,6 +13,7 @@ import { Todo } from '../../todo';
 
 export class TodoComponent implements OnInit {
   todo: Todo;
+  updatedTodo: Todo;
   id: number;
 
   constructor(private todoDataService: TodoDataService, private route: ActivatedRoute) { }
@@ -20,7 +21,12 @@ export class TodoComponent implements OnInit {
   ngOnInit() {
     this.id = +this.route.snapshot.params['id'];
     this.todo = this.todoDataService.getTodoById(this.id);
+    this.updatedTodo = Object.assign({}, this.todo);
   }
 
+  updateTodo() {
+    this.todo = this.updatedTodo;
+    this.todoDataService.updateTodoById(this.id, this.todo);
+  }
 }
 
