@@ -16,18 +16,23 @@
       <div class="card" *ngFor="let todo of todos">
         <div class="card-header" role="tab" id="headingOne">
           <h5 class="mb-0">
-            <input class="toggle" type="checkbox" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
-            <a data-toggle="collapse" data-parent="#accordion" [attr.href]="'#collapse' + todo.id" [class.completed]="todo.complete"
-              aria-expanded="true" aria-controls="collapseOne">
-              {{todo.title}}
-            </a>
-            
-            <button type="button" class="todo-icon" (click)="removeTodo(todo)" title="Delete" aria-label="Delete">
-              <i class="fa fa-times" aria-hidden="true"></i>
-            </button>
-            <button type="button" class="todo-icon" [routerLink]="['/todos', todo.id]" title="Edit" aria-label="Edit">
-              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            </button>
+            <label class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description todo-icon">
+                <a data-toggle="collapse" data-parent="#accordion" [attr.href]="'#collapse' + todo.id" [class.completed]="todo.complete"
+                  aria-expanded="true" aria-controls="collapseOne">
+                  {{todo.title}}
+                </a>
+                
+                <button type="button" class="todo-icon" (click)="removeTodo(todo)" title="Delete" aria-label="Delete">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="todo-icon" [routerLink]="['/todos', todo.id]" title="Edit" aria-label="Edit">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </button>
+              </span>
+            </label>
           </h5>
         </div>
 

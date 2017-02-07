@@ -16,3 +16,11 @@
   margin: 0 0.3rem;
   padding: 0;
 }
+
+.custom-control {
+  width: 100%;
+}
+
+.custom-control-description {
+  width: 100%;
+}
