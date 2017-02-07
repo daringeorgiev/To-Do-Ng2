@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="class=col-lg-6 col-lg-offset-2 col-md-8 col-md-offset-1">
+<div class="row justify-content-md-center">
+  <div class="col-lg-6 col-md-8">
     <div>
       <div class="page-header">
         <h1>Todos</h1>
@@ -7,23 +7,35 @@
       <div class="input-group">
         <input type="text" class="form-control" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
         <span class="input-group-btn">
-          <button class="btn btn-default" type="button" (click)="addTodo()">Add</button>
+          <button class="btn btn-secondary" type="button" (click)="addTodo()">Add</button>
         </span>
       </div>
     </div>
-    <div class="row todo-list" *ngIf="todos.length > 0">
-      <div class="class=col-lg-6 col-lg-offset-2 col-md-8 col-md-offset-1">
-        <ul class="list-group">
-          <li *ngFor="let todo of todos" class="list-group-item">
-            <div class="view">
-              <input class="toggle" type="checkbox" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
-              <a [routerLink]="['/todos', todo.id]" [class.completed]="todo.complete">{{todo.title}}</a>
-              <span class="remove-todo-icon glyphicon glyphicon-remove" (click)="removeTodo(todo)" aria-hidden="true"></span>
-            </div>
-          </li>
-        </ul>
+
+    <div id="accordion" class="todo-list" role="tablist" aria-multiselectable="true">
+      <div class="card" *ngFor="let todo of todos">
+        <div class="card-header" role="tab" id="headingOne">
+          <h5 class="mb-0">
+            <input class="toggle" type="checkbox" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
+            <a data-toggle="collapse" data-parent="#accordion" [attr.href]="'#collapse' + todo.id" [class.completed]="todo.complete"
+              aria-expanded="true" aria-controls="collapseOne">
+              {{todo.title}}
+            </a>
+            <a [routerLink]="['/todos', todo.id]" >Edit</a>
+            <button type="button" class="close" (click)="removeTodo(todo)" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </h5>
+        </div>
+
+        <div [attr.id]="'collapse' + todo.id" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+          <div class="card-block">
+              {{todo.text}}
+          </div>
+        </div>
       </div>
     </div>
+
     <div *ngIf="todos.length > 0">
       <span class="todo-count"><strong>{{todos.length}}</strong> {{todos.length == 1 ? 'item' : 'items'}} left</span>
     </div>
