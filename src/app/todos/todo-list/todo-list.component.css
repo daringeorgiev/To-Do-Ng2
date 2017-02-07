@@ -7,6 +7,12 @@
   margin-top: 3rem;
 }
 
-.remove-todo-icon {
+.todo-icon {
+  background: 0 0;
+  border: 0;
+  color: #292b2c;
+  cursor: pointer;
   float: right;
+  margin: 0 0.3rem;
+  padding: 0;
 }
