@@ -12,6 +12,7 @@ import { routedComponents } from './app.routes';
 import { TodoComponent } from './todos/todo/todo.component';
 import { TodoListComponent } from './todos/todo-list/todo-list.component';
 import { TodoDataService } from './todo-data.service';
+import { TodoPipe } from './todos/todo.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TodoDataService } from './todo-data.service';
     FooterComponent,
     LoginComponent,
     TodoComponent,
-    TodoListComponent
+    TodoListComponent,
+    TodoPipe
   ],
   imports: [
     BrowserModule,

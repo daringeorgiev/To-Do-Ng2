@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { TodoDataService } from '../../todo-data.service';
 import { Todo } from '../../todo';
+import { TodoPipe } from '../todo.pipe';
 
 @Component({
   selector: 'app-todo-list',
@@ -10,6 +11,7 @@ import { Todo } from '../../todo';
 })
 export class TodoListComponent implements OnInit {
   newTodo: Todo = new Todo();
+  searchWord: string;
 
   constructor(private todoDataService: TodoDataService) { }
 

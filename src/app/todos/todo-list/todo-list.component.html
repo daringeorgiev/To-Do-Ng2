@@ -26,13 +26,13 @@
       <div class="card-header">
         <form class="form-inline">
           <label class="sr-only" for="inlineFormInput">Search</label>
-          <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Search...">
+          <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Search..." [(ngModel)]="searchWord" name="searchWord">
         </form>
       </div>
       
       <div class="card-block">
         <div id="accordion" class="" role="tablist" aria-multiselectable="true">
-          <div class="card" *ngFor="let todo of todos">
+          <div class="card" *ngFor="let todo of todos | todoSearch : searchWord">
             <div class="card-header" role="tab" id="headingOne">
               <h5 class="mb-0">
                 <label class="custom-control custom-checkbox">
