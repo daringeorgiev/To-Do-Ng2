@@ -4,6 +4,7 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const methodOverride = require('method-override');
 
 const port = process.env.PORT || '3000';
 const database = process.env.DB || 'mongodb://localhost/toDos';
@@ -12,7 +13,8 @@ const app = express();
 
 // Parsers for POST data
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride());
 
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
