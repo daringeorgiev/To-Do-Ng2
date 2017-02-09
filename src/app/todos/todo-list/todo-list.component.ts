@@ -12,6 +12,7 @@ import { TodoPipe } from '../todo.pipe';
 export class TodoListComponent implements OnInit {
   newTodo: Todo = new Todo();
   searchWord: string;
+  allState: boolean;
 
   constructor(private todoDataService: TodoDataService) { }
 
@@ -25,6 +26,11 @@ export class TodoListComponent implements OnInit {
 
   toggleTodoComplete(todo) {
     this.todoDataService.toggleTodoComplete(todo);
+  }
+
+  changeAllState(state: boolean) {
+    this.todoDataService.getAllTodos()
+      .map(todo => todo.complete = !this.allState);
   }
 
   removeTodo(todo) {

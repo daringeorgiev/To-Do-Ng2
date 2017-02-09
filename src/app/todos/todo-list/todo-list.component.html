@@ -22,36 +22,42 @@
         <textarea class="form-control" id="todoText" placeholder="Description" [(ngModel)]="newTodo.text" [ngModelOptions]="{standalone: true}"></textarea>
       </div>
     </div>
+
     <div class="card todo-list">
       <div class="card-header">
         <form class="form-inline">
+          <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+            <input type="checkbox" class="custom-control-input" (click)="changeAllState()" [(ngModel)]="allState" name="allState">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">All</span>
+          </label>
           <label class="sr-only" for="inlineFormInput">Search</label>
           <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Search..." [(ngModel)]="searchWord" name="searchWord">
         </form>
       </div>
-      
+
       <div class="card-block">
         <div id="accordion" class="" role="tablist" aria-multiselectable="true">
           <div class="card" *ngFor="let todo of todos | todoSearch : searchWord">
             <div class="card-header" role="tab" id="headingOne">
               <h5 class="mb-0">
-                <label class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
-              <span class="custom-control-indicator"></span>
-              <span class="custom-control-description todo-icon">
-                <a data-toggle="collapse" data-parent="#accordion" [attr.href]="'#collapse' + todo.id" [class.completed]="todo.complete"
-                  aria-expanded="true" aria-controls="collapseOne">
-                  {{todo.title}}
-                </a>
-                
-                <button type="button" class="todo-icon" (click)="removeTodo(todo)" title="Delete" aria-label="Delete">
-                  <i class="fa fa-times" aria-hidden="true"></i>
-                </button>
-                <button type="button" class="todo-icon" [routerLink]="['/todos', todo.id]" title="Edit" aria-label="Edit">
-                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                </button>
-              </span>
-            </label>
+                <label class="custom-control custom-checkbox list-item-label">
+                  <input type="checkbox" class="custom-control-input" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description list-item-label">
+                    <a data-toggle="collapse" data-parent="#accordion" [attr.href]="'#collapse' + todo.id" [class.completed]="todo.complete"
+                      aria-expanded="true" aria-controls="collapseOne">
+                      {{todo.title}}
+                    </a>
+                    
+                    <button type="button" class="todo-icon" (click)="removeTodo(todo)" title="Delete" aria-label="Delete">
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="todo-icon" [routerLink]="['/todos', todo.id]" title="Edit" aria-label="Edit">
+                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </label>
               </h5>
             </div>
             <div [attr.id]="'collapse' + todo.id" class="collapse" role="tabpanel" aria-labelledby="headingOne">
