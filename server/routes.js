@@ -1,22 +1,22 @@
 const router = require('express').Router();
 
-router.get('/api/toDos', function (req, res) {
+router.get('/todos', function (req, res) {
   res.send('get toDos')
 });
 
-router.get('/api/toDos/:id', function (req, res) {
+router.get('/todos/:id', function (req, res) {
   res.send('get toDos by id')
 });
 
-router.post('/api/toDos', function (req, res) {
+router.post('/todos', function (req, res) {
   res.send('post toDos')
 });
 
-router.put('/api/toDos/:id', function (req, res) {
+router.put('/todos/:id', function (req, res) {
   res.send('put toDos')
 });
 
-router.delete('/api/toDos/:id', function (req, res) {
+router.delete('/todos/:id', function (req, res) {
   res.send('delete toDos')
 });
 
