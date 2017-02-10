@@ -9,6 +9,9 @@ const methodOverride = require('method-override');
 const port = process.env.PORT || '3000';
 const database = process.env.DB || 'mongodb://localhost/toDos';
 
+mongoose.Promise = require('bluebird');
+mongoose.connect(database);
+
 const app = express();
 
 // Parsers for POST data

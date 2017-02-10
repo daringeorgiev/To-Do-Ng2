@@ -1,24 +1,15 @@
 const router = require('express').Router();
+const todoController = require('./todos/controller');
 
-router.get('/todos', function (req, res) {
-  res.send('get toDos')
-});
+router.get('/todos', todoController.getAllTodos);
 
-router.get('/todos/:id', function (req, res) {
-  res.send('get toDos by id')
-});
+router.get('/todos/:id', todoController.getTodoById);
 
-router.post('/todos', function (req, res) {
-  res.send('post toDos')
-});
+router.post('/todos', todoController.createTodo);
 
-router.put('/todos/:id', function (req, res) {
-  res.send('put toDos')
-});
+router.put('/todos/:id', todoController.updateTodo);
 
-router.delete('/todos/:id', function (req, res) {
-  res.send('delete toDos')
-});
+router.delete('/todos/:id', todoController.deleteTodo);
 
 router.get('/', function (req, res) {
   res.sendFile(__dirname + 'dist/index.html');
