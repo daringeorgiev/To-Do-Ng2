@@ -28,13 +28,14 @@ export class TodoDataService {
                     .catch(this.handleError);
   }
 
-  // ToDo POST /todos
-  addTodo(todo: Todo): TodoDataService {
-    if (!todo.id) {
-      todo.id = ++this.lastId;
-      this.todos.push(todo);
-      return this;
-    }
+  // POST /todos
+  addTodo (todo: Todo): Observable<Todo> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.todosUrl, todo, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
   }
 
   // ToDo DELETE /todos/:id

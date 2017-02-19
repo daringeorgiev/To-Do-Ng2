@@ -30,7 +30,12 @@ export class TodoListComponent implements OnInit {
   }
 
   addTodo() {
-    this.todoDataService.addTodo(this.newTodo);
+    if (!this.newTodo.title) { return; }
+    this.todoDataService.addTodo(this.newTodo)
+                     .subscribe(
+                       hero  => this.todos.push(hero),
+                       error =>  this.errorMessage = <any>error);
+
     this.newTodo = new Todo();
   }
 
