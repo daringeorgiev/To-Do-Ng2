@@ -11,12 +11,22 @@ import { TodoPipe } from '../todo.pipe';
 })
 export class TodoListComponent implements OnInit {
   newTodo: Todo = new Todo();
+  todos: Todo[];
+  errorMessage: String;
   searchWord: string;
   allState: boolean;
 
   constructor(private todoDataService: TodoDataService) { }
 
   ngOnInit() {
+    this.getTodos();
+  }
+
+  getTodos() {
+    this.todoDataService.getTodos()
+                        .subscribe(
+                          todos => this.todos = todos,
+                          error => this.errorMessage = <any>error);
   }
 
   addTodo() {
@@ -29,15 +39,12 @@ export class TodoListComponent implements OnInit {
   }
 
   changeAllState(state: boolean) {
-    this.todoDataService.getAllTodos()
-      .map(todo => todo.complete = !this.allState);
+    // this.todoDataService.getAllTodos()
+    //   .map(todo => todo.complete = !this.allState);
   }
 
   removeTodo(todo) {
     this.todoDataService.deleteTodoById(todo.id);
   }
 
-  get todos() {
-    return this.todoDataService.getAllTodos();
-  }
 }
