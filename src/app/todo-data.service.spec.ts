@@ -18,7 +18,7 @@ describe('TodoDataService', () => {
   describe('#detAllTodos()', () => {
 
     it('should return an empty array', inject([TodoDataService], (service: TodoDataService) => {
-      expect(service.getAllTodos()).toEqual([]);
+      expect(service.getTodos()).toEqual([]);
     }));
 
     it('should return all todos', inject([TodoDataService], (service: TodoDataService) => {
@@ -36,7 +36,7 @@ describe('TodoDataService', () => {
       service.addTodo(todo1);
       service.addTodo(todo2);
 
-      expect(service.getAllTodos()).toEqual([todo1, todo2]);
+      expect(service.getTodos()).toEqual([todo1, todo2]);
     }));
 
   });
@@ -81,11 +81,11 @@ describe('TodoDataService', () => {
       service.addTodo(todo1);
       service.addTodo(todo2);
 
-      expect(service.getAllTodos()).toEqual([todo1, todo2]);
+      expect(service.getTodos()).toEqual([todo1, todo2]);
       service.deleteTodoById(1);
-      expect(service.getAllTodos()).toEqual([todo2]);
+      expect(service.getTodos()).toEqual([todo2]);
       service.deleteTodoById(2);
-      expect(service.getAllTodos()).toEqual([]);
+      expect(service.getTodos()).toEqual([]);
     }));
 
     it('should not remove anything if todo with corresponding id is not found', inject([TodoDataService], (service: TodoDataService) => {
@@ -103,9 +103,9 @@ describe('TodoDataService', () => {
       service.addTodo(todo1);
       service.addTodo(todo2);
 
-      expect(service.getAllTodos()).toEqual([todo1, todo2]);
+      expect(service.getTodos()).toEqual([todo1, todo2]);
       service.deleteTodoById(3);
-      expect(service.getAllTodos()).toEqual([todo1, todo2]);
+      expect(service.getTodos()).toEqual([todo1, todo2]);
     }));
 
   });
