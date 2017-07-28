@@ -1,7 +1,8 @@
 export class Todo {
   id: number;
+  _id: string;
   title: string = '';
-  text: string = '';
+  description: string = '';
   ownerId: number;
   complete: boolean = false;
 

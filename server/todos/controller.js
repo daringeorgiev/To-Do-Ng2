@@ -36,7 +36,7 @@ module.exports = {
     Todo
       .create({
         title: req.body.title,
-        description: res.req.description || '',
+        description: req.body.description || '',
         ownerId: req.body.ownerId || '',
         complete: req.body.complete || false
       }, function (err, todo) {

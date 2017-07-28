@@ -39,9 +39,10 @@ export class TodoDataService {
   }
 
   // ToDo DELETE /todos/:id
-  deleteTodoById(id: number): TodoDataService {
-    this.todos = this.todos.filter(todo => todo.id !== id);
-    return this;
+  deleteTodoById(id: string): Observable<Todo[]> {
+    return this.http.delete(this.todosUrl + '/' + id)
+                    .map(this.extractData)
+                    .catch(this.handleError);
   }
 
   // ToDo PUT /todos/:id

@@ -12,7 +12,7 @@ export class TodoPipe implements PipeTransform {
     };
 
     return allTodos.filter(todo => {
-      return todo.title.includes(searchWord) || todo.text.includes(searchWord);
+      return todo.title.includes(searchWord) || todo.description.includes(searchWord);
     });
   }
 }

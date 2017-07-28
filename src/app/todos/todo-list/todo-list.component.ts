@@ -33,14 +33,14 @@ export class TodoListComponent implements OnInit {
     if (!this.newTodo.title) { return; }
     this.todoDataService.addTodo(this.newTodo)
                      .subscribe(
-                       hero  => this.todos.push(hero),
+                       todo  => this.todos.push(todo),
                        error =>  this.errorMessage = <any>error);
 
     this.newTodo = new Todo();
   }
 
   toggleTodoComplete(todo) {
-    this.todoDataService.toggleTodoComplete(todo);
+    todo.complete = !todo.complete;
   }
 
   changeAllState(state: boolean) {
@@ -49,7 +49,11 @@ export class TodoListComponent implements OnInit {
   }
 
   removeTodo(todo) {
-    this.todoDataService.deleteTodoById(todo.id);
+    this.todoDataService.deleteTodoById(todo._id)
+                        .subscribe(
+                          todos  => this.todos = todos,
+                          error =>  this.errorMessage = <any>error
+                        );
   }
 
 }

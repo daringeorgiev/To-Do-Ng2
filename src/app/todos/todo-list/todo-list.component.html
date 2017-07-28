@@ -20,7 +20,7 @@
       <div class="collapse" id="todoDetails">
         <div class="card card-block">
           <label for="todoText">Description</label>
-          <textarea class="form-control" id="todoText" placeholder="Description" [(ngModel)]="newTodo.text" [ngModelOptions]="{standalone: true}"></textarea>
+          <textarea class="form-control" id="todoText" placeholder="Description" [(ngModel)]="newTodo.description" [ngModelOptions]="{standalone: true}"></textarea>
         </div>
       </div>
     </section>
@@ -65,7 +65,7 @@
               </div>
               <div [attr.id]="'collapse' + todo.id" class="collapse" role="tabpanel" aria-labelledby="headingOne">
                 <div class="card-block">
-                  {{todo.text}}
+                  {{todo.description}}
                 </div>
               </div>
             </div>
