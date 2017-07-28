@@ -44,8 +44,7 @@ export class TodoListComponent implements OnInit {
   }
 
   changeAllState(state: boolean) {
-    // this.todoDataService.getAllTodos()
-    //   .map(todo => todo.complete = !this.allState);
+    this.todos.map(todo => todo.complete = !this.allState);
   }
 
   removeTodo(todo) {

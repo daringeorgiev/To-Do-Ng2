@@ -46,23 +46,19 @@ export class TodoDataService {
   }
 
   // ToDo PUT /todos/:id
-  updateTodoById(id: number, values: Object = {}): Todo {
-    const todo = this.getTodoById(id);
-    if (!todo) {
-      return null;
-    }
-
-    Object.assign(todo, values);
-    return todo;
+  updateTodoById(id: string, values: Object = {}): any {
+    // Todo
   }
 
   // ToDo GET /todos/:id
-  getTodoById(id: number): Todo {
-    return this.todos.filter(todo => todo.id === id).pop();
+  getTodoById(id: string): Observable<Todo> {
+    return this.http.get(this.todosUrl + `/${id}`)
+                    .map(this.extractData)
+                    .catch(this.handleError);
   }
 
   toggleTodoComplete(todo: Todo) {
-    const updatedTodo = this.updateTodoById(todo.id, {
+    const updatedTodo = this.updateTodoById(todo._id, {
       complete: !todo.complete
     });
     return updatedTodo;
