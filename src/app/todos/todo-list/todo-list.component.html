@@ -48,10 +48,7 @@
                     <input type="checkbox" class="custom-control-input" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
                     <span class="custom-control-indicator"></span>
                     <span class="custom-control-description list-item-label">
-                      <a data-toggle="collapse" data-parent="#accordion" [attr.href]="'#collapse' + todo.id" [class.completed]="todo.complete"
-                        aria-expanded="true" aria-controls="collapseOne">
-                        {{todo.title}}
-                      </a>
+                      <span [class.completed]="todo.complete">{{todo.title}}</span>
                       
                       <button type="button" class="todo-icon" (click)="removeTodo(todo)" title="Delete" aria-label="Delete">
                         <i class="fa fa-times" aria-hidden="true"></i>
@@ -59,11 +56,17 @@
                       <button type="button" class="todo-icon" [routerLink]="['/todos', todo._id]" title="Edit" aria-label="Edit">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                       </button>
+                      <!--Todo Find a better way  -->
+                      <a data-toggle="collapse" data-parent="#accordion" [attr.href]="'#collapse' + todo._id" 
+                        aria-expanded="true" aria-controls="collapseOne" 
+                        data-parent="#accordion" class="btn todo-icon" title="Expand" aria-label="Expand">
+                        <i class="fa fa-expand" aria-hidden="true"></i>
+                      </a>
                     </span>
                   </label>
                 </h5>
               </div>
-              <div [attr.id]="'collapse' + todo.id" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+              <div [attr.id]="'collapse' + todo._id" class="collapse" role="tabpanel" aria-labelledby="headingOne">
                 <div class="card-block">
                   {{todo.description}}
                 </div>

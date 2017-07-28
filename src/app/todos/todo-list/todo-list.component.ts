@@ -41,6 +41,11 @@ export class TodoListComponent implements OnInit {
 
   toggleTodoComplete(todo) {
     todo.complete = !todo.complete;
+    this.todoDataService.updateTodoById(todo._id, todo)
+                    .subscribe(
+                      serverTodo => todo = serverTodo,
+                      error => this.errorMessage = <any>error
+                    );
   }
 
   changeAllState(state: boolean) {

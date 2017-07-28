@@ -32,8 +32,11 @@ export class TodoComponent implements OnInit {
   }
 
   updateTodo() {
-    this.todo = this.updatedTodo;
-    // this.todoDataService.updateTodoById(this.id, this.todo);
+    this.todoDataService.updateTodoById(this.id, this.updatedTodo)
+                        .subscribe(
+                          todo => this.todo = todo,
+                          error => this.errorMessage = <any>error
+                        );
   }
 }
 

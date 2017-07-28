@@ -47,7 +47,9 @@ export class TodoDataService {
 
   // ToDo PUT /todos/:id
   updateTodoById(id: string, values: Object = {}): any {
-    // Todo
+    return this.http.put(this.todosUrl + `/${id}`, values)
+                    .map(this.extractData)
+                    .catch(this.handleError);
   }
 
   // ToDo GET /todos/:id
