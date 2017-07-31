@@ -41,7 +41,7 @@
 
         <div class="card-block">
           <div id="accordion" class="" role="tablist" aria-multiselectable="true">
-            <div class="card" *ngFor="let todo of todos | todoSearch : searchWord">
+            <div class="card" *ngFor="let todo of todos | todoSearch : searchWord" [dragula]='"todo-list"' >
               <app-list-item 
                 [todo]="todo"
                 (onRemoveTodo)="removeTodo($event)">

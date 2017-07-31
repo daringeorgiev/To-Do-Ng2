@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
+import { DragulaModule } from 'ng2-dragula/ng2-dragula';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -30,7 +32,8 @@ import { ListItemComponent } from './todos/list-item/list-item.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routedComponents
+    routedComponents,
+    DragulaModule
   ],
   providers: [TodoDataService],
   bootstrap: [AppComponent]
