@@ -42,35 +42,10 @@
         <div class="card-block">
           <div id="accordion" class="" role="tablist" aria-multiselectable="true">
             <div class="card" *ngFor="let todo of todos | todoSearch : searchWord">
-              <div class="card-header" role="tab" id="headingOne">
-                <h5 class="mb-0">
-                  <label class="custom-control custom-checkbox list-item-label">
-                    <input type="checkbox" class="custom-control-input" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
-                    <span class="custom-control-indicator"></span>
-                    <span class="custom-control-description list-item-label">
-                      <span [class.completed]="todo.complete">{{todo.title}}</span>
-                      
-                      <button type="button" class="todo-icon" (click)="removeTodo(todo)" title="Delete" aria-label="Delete">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                      </button>
-                      <button type="button" class="todo-icon" [routerLink]="['/todos', todo._id]" title="Edit" aria-label="Edit">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                      </button>
-                      <!--Todo Find a better way  -->
-                      <a data-toggle="collapse" data-parent="#accordion" [attr.href]="'#collapse' + todo._id" 
-                        aria-expanded="true" aria-controls="collapseOne" 
-                        data-parent="#accordion" class="btn todo-icon" title="Expand" aria-label="Expand">
-                        <i class="fa fa-expand" aria-hidden="true"></i>
-                      </a>
-                    </span>
-                  </label>
-                </h5>
-              </div>
-              <div [attr.id]="'collapse' + todo._id" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-                <div class="card-block">
-                  {{todo.description}}
-                </div>
-              </div>
+              <app-list-item 
+                [todo]="todo"
+                (onRemoveTodo)="removeTodo($event)">
+              </app-list-item>
             </div>
           </div>
         </div>

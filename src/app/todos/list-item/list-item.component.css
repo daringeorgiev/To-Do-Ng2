@@ -1,0 +1,18 @@
+.completed {
+  text-decoration: line-through;
+  color: green;
+}
+
+.todo-icon {
+  background: 0 0;
+  border: 0;
+  color: #292b2c;
+  cursor: pointer;
+  float: right;
+  margin: 0 0.3rem;
+  padding: 0;
+}
+
+.list-item-label {
+  width: 100%;
+}

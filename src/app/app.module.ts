@@ -13,6 +13,7 @@ import { TodoComponent } from './todos/todo/todo.component';
 import { TodoListComponent } from './todos/todo-list/todo-list.component';
 import { TodoDataService } from './todo-data.service';
 import { TodoPipe } from './todos/todo.pipe';
+import { ListItemComponent } from './todos/list-item/list-item.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TodoPipe } from './todos/todo.pipe';
     LoginComponent,
     TodoComponent,
     TodoListComponent,
-    TodoPipe
+    TodoPipe,
+    ListItemComponent
   ],
   imports: [
     BrowserModule,
