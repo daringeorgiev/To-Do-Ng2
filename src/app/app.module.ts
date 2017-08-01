@@ -16,6 +16,7 @@ import { TodoListComponent } from './todos/todo-list/todo-list.component';
 import { TodoDataService } from './todo-data.service';
 import { TodoPipe } from './todos/todo.pipe';
 import { ListItemComponent } from './todos/list-item/list-item.component';
+import { SortTodoPipe } from './todos/sort-todo.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ListItemComponent } from './todos/list-item/list-item.component';
     TodoComponent,
     TodoListComponent,
     TodoPipe,
-    ListItemComponent
+    ListItemComponent,
+    SortTodoPipe
   ],
   imports: [
     BrowserModule,

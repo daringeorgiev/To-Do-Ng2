@@ -36,12 +36,17 @@
             </label>
             <label class="sr-only" for="inlineFormInput">Search</label>
             <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Search..." [(ngModel)]="searchWord" name="searchWord">
+            <span>Order by: 
+              <select class="custom-select" [(ngModel)]="selectedOrder" name="todoOrder">
+                <option *ngFor="let order of orderOptions" [ngValue]="order">{{order.name}}</option>
+              </select>
+            </span>
           </form>
         </div>
 
         <div class="card-block">
           <div id="accordion" class="" role="tablist" aria-multiselectable="true" [dragula]='"todo-list"'>
-            <div class="card" *ngFor="let todo of todos | todoSearch : searchWord">
+            <div class="card" *ngFor="let todo of todos | todoSearch : searchWord | sortTodo: selectedOrder.value">
               <app-list-item 
                 [todo]="todo"
                 (onRemoveTodo)="removeTodo($event)">

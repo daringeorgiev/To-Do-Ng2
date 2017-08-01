@@ -15,8 +15,23 @@ export class TodoListComponent implements OnInit {
   errorMessage: String;
   searchWord: string;
   allState: boolean;
+  orderOptions: Object[];
+  selectedOrder: Object;
 
-  constructor(private todoDataService: TodoDataService) { }
+  constructor(private todoDataService: TodoDataService) { 
+    this.orderOptions = [{
+      name: 'Free',
+      value: ''
+    }, {
+      name: 'Title',
+      value: 'title'
+    }, {
+      name: 'Complete',
+      value: 'complete'
+    }];
+
+    this.selectedOrder = this.orderOptions[0];
+  }
 
   ngOnInit() {
     this.getTodos();
