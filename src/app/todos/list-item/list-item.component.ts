@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Todo } from '../../todo';
 import { TodoDataService } from '../../todo-data.service';
+import { DragulaService } from 'ng2-dragula/ng2-dragula';
 
 @Component({
   selector: 'app-list-item',
@@ -13,8 +14,14 @@ export class ListItemComponent {
 
   @Input() todo: Todo;
   @Output() onRemoveTodo = new EventEmitter<Todo>();
+  @Output() onDropTodo = new EventEmitter();
 
-  constructor(private todoDataService: TodoDataService) { }
+  constructor(private todoDataService: TodoDataService,
+              private dragulaService: DragulaService) {
+    dragulaService.drop.subscribe((value) => {
+      this.onDropTodo.emit();
+    });
+  }
 
   toggleTodoComplete(todo) {
     todo.complete = !todo.complete;

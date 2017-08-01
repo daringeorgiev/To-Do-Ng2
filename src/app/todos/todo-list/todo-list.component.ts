@@ -75,4 +75,8 @@ export class TodoListComponent implements OnInit {
                         );
   }
 
+  dropTodo() {
+    this.selectedOrder = this.orderOptions[0];
+  }
+
 }
