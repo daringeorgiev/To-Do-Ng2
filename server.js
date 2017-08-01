@@ -10,7 +10,14 @@ const port = process.env.PORT || '3000';
 const database = process.env.DB || 'mongodb://localhost/toDos';
 
 mongoose.Promise = require('bluebird');
-mongoose.connect(database);
+const promise = mongoose.connect(database, {
+  useMongoClient: true,
+  /* other options */
+});
+
+promise.then(function(db) {
+  //  Use `db`, for instance `db.model()`
+});
 
 const app = express();
 
