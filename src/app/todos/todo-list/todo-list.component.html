@@ -29,18 +29,19 @@
       <div class="card todo-list">
         <div class="card-header">
           <form class="form-inline">
-            <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
-              <input type="checkbox" class="custom-control-input" (click)="changeAllState()" [(ngModel)]="allState" name="allState">
-              <span class="custom-control-indicator"></span>
-              <span class="custom-control-description">All</span>
-            </label>
-            <label class="sr-only" for="inlineFormInput">Search</label>
-            <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Search..." [(ngModel)]="searchWord" name="searchWord">
-            <span>Order by: 
-              <select class="custom-select" [(ngModel)]="selectedOrder" name="todoOrder">
+            <div class="form-group row">
+              <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+                <input type="checkbox" class="custom-control-input" (click)="changeAllState()" [(ngModel)]="allState" name="allState">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">All</span>
+              </label>
+              <label class="sr-only" for="inlineFormInput">Search</label>
+              <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Search..." [(ngModel)]="searchWord" name="searchWord">
+              <label class="mr-sm-2" for="inlineFormCustomSelect">Order By:</label> 
+              <select class="custom-select" id="inlineFormCustomSelect" [(ngModel)]="selectedOrder" name="todoOrder">
                 <option *ngFor="let order of orderOptions" [ngValue]="order">{{order.name}}</option>
               </select>
-            </span>
+            </div>
           </form>
         </div>
 
