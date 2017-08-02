@@ -50,7 +50,7 @@
             <div class="card" *ngFor="let todo of todos | todoSearch : searchWord | sortTodo: selectedOrder.value">
               <app-list-item 
                 [todo]="todo"
-                (onDropTodo)="dropTodo()"
+                (onChangeTodo)="changedTodo()"
                 (onRemoveTodo)="removeTodo($event)">
               </app-list-item>
             </div>

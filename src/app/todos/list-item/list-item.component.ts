@@ -14,12 +14,12 @@ export class ListItemComponent {
 
   @Input() todo: Todo;
   @Output() onRemoveTodo = new EventEmitter<Todo>();
-  @Output() onDropTodo = new EventEmitter();
+  @Output() onChangeTodo = new EventEmitter();
 
   constructor(private todoDataService: TodoDataService,
               private dragulaService: DragulaService) {
     dragulaService.drop.subscribe((value) => {
-      this.onDropTodo.emit();
+      this.onChangeTodo.emit();
     });
   }
 
@@ -27,7 +27,10 @@ export class ListItemComponent {
     todo.complete = !todo.complete;
     this.todoDataService.updateTodoById(todo._id, todo)
                     .subscribe(
-                      serverTodo => todo = serverTodo,
+                      serverTodo => {
+                        todo = serverTodo;
+                        this.onChangeTodo.emit();
+                      },
                       error => this.errorMessage = <any>error
                     );
   }

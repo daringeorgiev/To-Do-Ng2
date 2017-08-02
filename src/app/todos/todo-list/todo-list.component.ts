@@ -80,7 +80,7 @@ export class TodoListComponent implements OnInit {
                         );
   }
 
-  dropTodo() {
+  changedTodo() {
     this.selectedOrder = this.orderOptions[0];
   }
 
