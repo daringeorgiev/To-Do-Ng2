@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DragulaService } from 'ng2-dragula/ng2-dragula';
 
 import { TodoDataService } from '../../todo-data.service';
 import { Todo } from '../../todo';
@@ -18,7 +19,8 @@ export class TodoListComponent implements OnInit {
   orderOptions: Object[];
   selectedOrder: Object;
 
-  constructor(private todoDataService: TodoDataService) { 
+  constructor(private todoDataService: TodoDataService,
+              private dragulaService: DragulaService) { 
     this.orderOptions = [{
       name: 'Free',
       value: ''
@@ -31,6 +33,9 @@ export class TodoListComponent implements OnInit {
     }];
 
     this.selectedOrder = this.orderOptions[0];
+
+    dragulaService.setOptions('todo-list', {
+    });
   }
 
   ngOnInit() {

@@ -46,7 +46,7 @@
         </div>
 
         <div class="card-block">
-          <div id="accordion" class="" role="tablist" aria-multiselectable="true" [dragula]='"todo-list"'>
+          <div id="accordion" class="" role="tablist" aria-multiselectable="true" [dragula]='"todo-list"' [dragulaModel]='todos'>
             <div class="card" *ngFor="let todo of todos | todoSearch : searchWord | sortTodo: selectedOrder.value">
               <app-list-item 
                 [todo]="todo"
